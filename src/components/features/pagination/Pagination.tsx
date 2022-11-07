@@ -18,7 +18,7 @@ export const Paginate: FC<PaginationType> = ({totalPosts, postPerPage}) => {
         <div className='flex justify-center'>
             <Stack spacing={2}>
                 <Pagination
-                    count={totalPosts / postPerPage}
+                    count={Math.ceil(totalPosts / postPerPage)}
                     page={page}
                     variant="outlined"
                     color="primary"

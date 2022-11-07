@@ -9,7 +9,6 @@ export const getArticles = createAsyncThunk('article/getArticles',
         try {
             const {data} = await axios.get(`/articles?limit=5&offset=${arg.offsetNum}`)
 
-            console.log(data)
             return data
         } catch (e) {
             return rejectWithValue(e)
@@ -25,17 +24,31 @@ export const getArticle = createAsyncThunk('article/getArticle',
 )
 
 export const getMyArticles = createAsyncThunk('user/getMyArticles   ',
-    async (username: string) => {
+    async (username: string, {dispatch,rejectWithValue }) => {
         const {data} = await axios.get(`/articles?author=${username}`)
 
-        return data
+        try {
+
+            return data
+        }
+        catch (e) {
+            return rejectWithValue(e)
+        }
+
     }
 )
-export const deleteArticles = createAsyncThunk('user/getMyArticles   ',
-    async (article: string) => {
+export const deleteArticles = createAsyncThunk('user/deleteMyArticles',
+    async (article: string, {dispatch, rejectWithValue}) => {
         const {data} = await axios.delete(`/articles/${article}`)
 
-        return data
+        try {
+            toast("deleted")
+            return data
+        }
+        catch (e) {
+            toast("failed")
+            return rejectWithValue(e)
+        }
     }
 )
 

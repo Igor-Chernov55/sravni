@@ -11,7 +11,12 @@ const MyPosts = () => {
 
     useEffect(() => {
         dispatch(getMyArticles(user.username))
-    },[dispatch])
+
+    },[dispatch, user , deleteArticles])
+
+    useEffect(() => {
+
+    }, [myPost])
 
     return (
         <div>

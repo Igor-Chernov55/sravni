@@ -1,12 +1,13 @@
 import {createSlice} from "@reduxjs/toolkit";
 import {getUser} from "../../api/profile/profileAction";
-import {getMyArticles} from "../../api/articles/articlesActions";
+import {deleteArticles, getMyArticles} from "../../api/articles/articlesActions";
 import {Author} from "../../types/api";
 
 export interface Root {
     user: User
     isLoading: boolean
     articles: Article[]
+    getPosts: boolean
 }
 
 export interface Article {
@@ -54,7 +55,7 @@ const initialState: Root = {
             following: false
         },
     }],
-
+    getPosts: false,
     isLoading: false
 }
 
@@ -63,7 +64,6 @@ export const profileSlice = createSlice({
     initialState,
     reducers: {},
     extraReducers: (builder) => {
-
         builder.addCase(getUser.pending, state => {
             state.isLoading = true
         })
@@ -74,9 +74,11 @@ export const profileSlice = createSlice({
         builder.addCase(getUser.rejected, state => {
             state.isLoading = true
         })
-
         builder.addCase(getMyArticles.fulfilled, (state, action) => {
             state.articles = action.payload.articles
+        })
+        builder.addCase(deleteArticles.fulfilled, (state, action) => {
+            state.articles.pop()
         })
     }
 })

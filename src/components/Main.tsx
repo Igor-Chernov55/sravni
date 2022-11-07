@@ -17,7 +17,7 @@ const Main = () => {
 
     if (!token) return <p className='text-center text-lg'>Please register</p>
     return (
-        <div className='w-[900px] mx-auto py-3  justify-between flex-column items-center'>
+        <div className='max-w-[900px] mx-auto py-3  justify-between flex-column items-center'>
             {posts && posts.map((m, key) => (
                <Link key={key} to={`/Post:${m.slug}`}>
                         <div className='flex'>
