@@ -43,6 +43,7 @@ export const deleteArticles = createAsyncThunk('user/deleteMyArticles',
 
         try {
             toast("deleted")
+            console.log(data)
             return data
         }
         catch (e) {

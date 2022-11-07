@@ -7,7 +7,7 @@ export interface Root {
     user: User
     isLoading: boolean
     articles: Article[]
-    getPosts: boolean
+    getSlug: string
 }
 
 export interface Article {
@@ -55,14 +55,22 @@ const initialState: Root = {
             following: false
         },
     }],
-    getPosts: false,
+    getSlug: '',
     isLoading: false
 }
 
 export const profileSlice = createSlice({
     name: 'user',
     initialState,
-    reducers: {},
+    reducers: {
+        deleteArticle: (state, action) => {
+            state.getSlug = action.payload
+
+           state.articles = state.articles.filter(f => {
+                return  f.slug !== state.getSlug
+            })
+        }
+    },
     extraReducers: (builder) => {
         builder.addCase(getUser.pending, state => {
             state.isLoading = true
@@ -77,8 +85,6 @@ export const profileSlice = createSlice({
         builder.addCase(getMyArticles.fulfilled, (state, action) => {
             state.articles = action.payload.articles
         })
-        builder.addCase(deleteArticles.fulfilled, (state, action) => {
-            state.articles.pop()
-        })
+
     }
 })

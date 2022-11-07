@@ -2,21 +2,20 @@ import React, {useEffect} from 'react';
 import {useAppDispatch, useAppSelector} from "../features/hooks";
 import {deleteArticles, getArticle, getMyArticles} from "../api/articles/articlesActions";
 import {Link, useNavigate} from "react-router-dom";
+import {profileSlice} from "../store/slices/profileSlice";
 
 const MyPosts = () => {
     const dispatch = useAppDispatch()
     const user = useAppSelector(state => state.profile.user)
     const myPost = useAppSelector(state => state.profile.articles)
+    const slug = useAppSelector(state => state.profile.getSlug)
+
     const navigate = useNavigate()
 
     useEffect(() => {
         dispatch(getMyArticles(user.username))
 
-    },[dispatch, user , deleteArticles])
-
-    useEffect(() => {
-
-    }, [myPost])
+    },[dispatch])
 
     return (
         <div>
@@ -34,6 +33,7 @@ const MyPosts = () => {
 
                             <div className='flex-col'>
                                 <button className='flex px-2 py-1 bg-red-300 mb-2 rounded' onClick={() => {
+                                    dispatch(profileSlice.actions.deleteArticle(m.slug))
                                     dispatch(deleteArticles(m.slug))
                                 }}>delete post
                                 </button>
