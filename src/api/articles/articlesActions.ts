@@ -43,7 +43,6 @@ export const deleteArticles = createAsyncThunk('user/deleteMyArticles',
 
         try {
             toast("deleted")
-            console.log(data)
             return data
         }
         catch (e) {
@@ -78,7 +77,6 @@ export const createArticles = createAsyncThunk('articles/create',
 
 
 export const updateArticles = createAsyncThunk('articles/update',
-
     async (arg: {paramsSlug: any, initialValue: {
                 slug: string,
                 title: string,

@@ -34,6 +34,7 @@ const Navigation = () => {
         <div>
             <Layout>
                 <Routes>
+                    <Route path={'/sravni'} element={<Main/>}/>
                     <Route path={'/'} element={<Main/>}/>
                     <Route path={'/Main'} element={<Main/>}/>
                     <Route path={'/Profile'} element={<Profile/>}/>

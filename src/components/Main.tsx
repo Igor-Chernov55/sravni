@@ -12,7 +12,7 @@ const Main = () => {
     const dispatch = useAppDispatch()
 
     useEffect(() => {
-        dispatch(getArticles({}))
+       token && dispatch(getArticles({}))
     }, [dispatch])
 
     if (!token) return <p className='text-center text-lg'>Please register</p>

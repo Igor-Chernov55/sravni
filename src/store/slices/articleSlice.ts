@@ -1,33 +1,8 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {getArticle, getArticles, getMyArticles} from "../../api/articles/articlesActions";
+import {getArticle, getArticles} from "../../api/articles/articlesActions";
+import {OneAuthSlice} from "../../types/api";
 
-interface AuthSlice {
-    isLoading: boolean,
-    article: Article,
-}
-
-export interface Article {
-    slug: string
-    title: string
-    description: string
-    body: string
-    tagList: string[]
-    createdAt: string
-    updatedAt: string
-    favorited: boolean
-    favoritesCount: number
-    author: Author
-}
-
-export interface Author {
-    username: string
-    bio: any
-    image: string
-    following: boolean
-}
-
-
-const initialState: AuthSlice = {
+const initialState: OneAuthSlice = {
     isLoading: false,
     article: {
         slug: '',

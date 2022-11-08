@@ -40,3 +40,29 @@ export interface Author {
     image: string
     following: boolean
 }
+
+
+export interface OneAuthSlice {
+    isLoading: boolean,
+    article: OneArticle,
+}
+
+export interface OneArticle {
+    slug: string
+    title: string
+    description: string
+    body: string
+    tagList: string[]
+    createdAt: string
+    updatedAt: string
+    favorited: boolean
+    favoritesCount: number
+    author: OneAuthor
+}
+
+export interface OneAuthor {
+    username: string
+    bio: any
+    image: string
+    following: boolean
+}
