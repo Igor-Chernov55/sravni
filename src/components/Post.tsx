@@ -10,7 +10,7 @@ export const Post = () => {
     const params = useParams()
 
     useEffect(() => {
-        dispatch(getArticle(params.slug))
+        dispatch(getArticle({slug :params.slug}))
     }, [])
 
     return (

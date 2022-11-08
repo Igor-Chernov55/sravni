@@ -15,7 +15,7 @@ const MyPost = () => {
     const navigate = useNavigate()
 
     useEffect(() => {
-        dispatch(getArticle(params.slug))
+        dispatch(getArticle({slug: paramsSlug}))
     }, [params])
 
     useEffect(() => {

@@ -2,7 +2,6 @@ import {Formik} from 'formik';
 import React, {useEffect} from 'react';
 import {Link, useNavigate} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../../features/hooks";
-import {toast} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import {authLogin} from "../../api/authAction/auth";
 

@@ -6,9 +6,8 @@ import {toast} from "react-toastify";
 
 export const getArticles = createAsyncThunk('article/getArticles',
     async (arg: { offsetNum?: number }, {dispatch, rejectWithValue}) => {
+        const {data} = await axios.get(`/articles?limit=5&offset=${arg.offsetNum}`)
         try {
-            const {data} = await axios.get(`/articles?limit=5&offset=${arg.offsetNum}`)
-
             return data
         } catch (e) {
             return rejectWithValue(e)
@@ -17,9 +16,18 @@ export const getArticles = createAsyncThunk('article/getArticles',
 )
 
 export const getArticle = createAsyncThunk('article/getArticle',
-    async (slug?: string) => {
-        const {data} = await axios.get(`/articles/${slug?.replace(/:/, '')}`)
-        return data
+    async (arg: {slug?: string | undefined
+}, {dispatch, rejectWithValue}) => {
+
+        const {data} = await axios.get(`/articles/${arg.slug?.replace(/:/, '')}`)
+        try {
+
+            return data
+        }
+        catch (e) {
+            return rejectWithValue(e)
+        }
+
     }
 )
 
