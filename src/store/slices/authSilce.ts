@@ -1,6 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit";
 import {getArticles} from "../../api/articles/articlesActions";
-import {authLogin, authRegistration} from "../../api/authAction/auth";
+import {authLogin, authRegistration} from "../../api/auth/authAction";
 import {AuthSlice} from "../../types/api";
 
 const initialState: AuthSlice = {

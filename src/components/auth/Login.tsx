@@ -3,7 +3,7 @@ import React, {useEffect} from 'react';
 import {Link, useNavigate} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../../features/hooks";
 import 'react-toastify/dist/ReactToastify.css';
-import {authLogin} from "../../api/authAction/auth";
+import {authLogin} from "../../api/auth/authAction";
 
 const Login = () => {
     const token = useAppSelector(state => state.auth.token)

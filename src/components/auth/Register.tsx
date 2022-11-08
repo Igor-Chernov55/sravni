@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {Formik} from "formik";
 import {Link, useNavigate} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../../features/hooks";
-import {authRegistration} from "../../api/authAction/auth";
+import {authRegistration} from "../../api/auth/authAction";
 
 const Register = () => {
     const token = useAppSelector(state => state.auth.token)
