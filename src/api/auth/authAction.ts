@@ -9,14 +9,13 @@ export const authLogin = createAsyncThunk(
         let email = arg.email
         let password = arg.password
 
-        const {data} = await axios.post('/users/login', {
-                user: {
-                    email, password
-                }
-            }
-        )
-
         try {
+            const {data} = await axios.post('/users/login', {
+                    user: {
+                        email, password
+                    }
+                }
+            )
 
             if (data) {
                 window.localStorage.setItem('token', data.user.token)
@@ -40,16 +39,15 @@ export const authRegistration = createAsyncThunk(
         let email = arg.email
         let password = arg.password
 
-        const {data} = await axios.post('/users', {
-                user: {
-                    username,
-                    email,
-                    password
-                }
-            }
-        )
         try {
-
+            const {data} = await axios.post('/users', {
+                    user: {
+                        username,
+                        email,
+                        password
+                    }
+                }
+            )
             if (data) window.localStorage.setItem('token', data.user.token)
             toast('complete registration')
             return data
